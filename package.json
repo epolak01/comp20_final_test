@@ -1,0 +1,19 @@
+{
+  "name": "database_app",
+  "version": "1.0.0",
+  "description": "node app ",
+  "main": "database.js",
+  "scripts": {
+  "start": "node database.js"
+},
+  "repository": {
+  "type": "git",
+  "url": ""
+},
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+  "url": ""
+},
+  "homepage": ""
+}

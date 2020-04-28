@@ -8,7 +8,8 @@
 
 var http = require('http');
 var url = require('url');
-var alg = require("./algorithm")
+var alg = require("./algorithm");
+var port = process.env.PORT || 3000;
 
 http.createServer(function (req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -45,4 +46,4 @@ http.createServer(function (req, res) {
             db.close();
         });
     });
-}).listen(8080);
+}).listen(port);
