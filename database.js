@@ -37,7 +37,7 @@ http.createServer(function (req, res) {
             if (err) throw err;
             //console.log(result.length);
             if (result.length == 0) {
-                res.write("No Dog Breeds Found")
+                res.send("No Dog Breeds Found")
             } else {
                 // calculate scores for each breed
                 res.send(alg.dog_rating(JSON.stringify(q), JSON.stringify(result)))
