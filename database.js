@@ -19,42 +19,31 @@ http.createServer(function (req, res) {
 
     var MongoClient = require('mongodb').MongoClient;
     var mongourl = "mongodb+srv://dog_webpage:tygrUg-fenrac-qibby3@cluster0-ug0jz.mongodb.net/test?retryWrites=true&w=majority";
-    console.log("Not yet in db")
-
-    //res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none' });
+    //console.log("Not yet in db")
 
     //Connect to our database
     MongoClient.connect(mongourl, function (err, db) {
         if (err) throw err;
-        console.log("in db")
+        //console.log("in db")
         var dbo = db.db("final_project");
-        //res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none' });
-
         
-        // Queries database
         var query = { };
         query[attribute] = value
-        //var query = {attribute : value};
-        //console.log(query)
+            //var query = {attribute : value};
+            //console.log(query)
         dbo.collection("dogBreeds").find(query).toArray(function (err, result) {
             if (err) throw err;
-            console.log("in query")
+            //console.log("in query")
             //console.log(result.length);
             if (result.length == 0) {
-                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none'});
-                //res.write("No Dog Breeds Found")
+                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none&desc=None'});
                 return res.end()
             } else {
-                // calculate scores for each breed
-                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' +
-                alg.dog_rating(JSON.stringify(q), JSON.stringify(result))});
+            // calculate scores for each breed
+                dog = JSON.parse(alg.dog_rating(JSON.stringify(q), JSON.stringify(result)))                    
+                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' + dog.name + '&desc=' + dog.description});
                 return res.end()
-
-            }
-            
-            db.close();
-            console.log("closed db")
-            res.end();
-        });
+                }
+            });
     });
 }).listen(port);
