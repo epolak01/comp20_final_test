@@ -36,7 +36,7 @@ http.createServer(function (req, res) {
             //console.log("in query")
             //console.log(result.length);
             if (result.length == 0) {
-                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none&desc=None'});
+                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none'});
                 return res.end()
             } else {
             // calculate scores for each breed                 
