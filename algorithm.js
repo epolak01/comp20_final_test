@@ -47,9 +47,9 @@ exports.dog_rating = function (q, r) {
         num_maxes = 1;
     }*/
 
-    for (var i = 0; i < scores.length; i++) {
-        console.log("%i", scores[i])
-    }
+    //for (var i = 0; i < scores.length; i++) {
+    //    console.log("%i", scores[i])
+    //}
 
     max = -10000;
     ind_max = 0;
@@ -63,7 +63,7 @@ exports.dog_rating = function (q, r) {
     //console.log("%i", max)
     
 
-    console.log(result[ind_max].name)
-    return result[ind_max].name
+    //console.log(result[ind_max].name)
+    return JSON.stringify(result[ind_max])
     //res.write(result[ind_max].name)
 }
