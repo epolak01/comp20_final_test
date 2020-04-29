@@ -28,10 +28,11 @@ http.createServer(function (req, res) {
         var dbo = db.db("final_project");
 
         if (q.val == "idc") {
-            dbo.collection("dogBreeds").find().toArray(function (err, result) {
+            dbo.collection("dogBreeds").find({}).toArray(function (err, result) {
                 if (err) throw err;
                 //console.log("in query")
                 //console.log(result.length);
+                console.log(result)
                 if (result.length == 0) {
                     res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none' });
                     //res.write("No Dog Breeds Found")
