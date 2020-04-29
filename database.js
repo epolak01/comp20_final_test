@@ -39,9 +39,8 @@ http.createServer(function (req, res) {
                 res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none&desc=None'});
                 return res.end()
             } else {
-            // calculate scores for each breed
-                dog = JSON.parse(alg.dog_rating(JSON.stringify(q), JSON.stringify(result)))                    
-                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' + dog.name + '&desc=' + dog.description});
+            // calculate scores for each breed                 
+                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' + JSON.parse(alg.dog_rating(JSON.stringify(q), JSON.stringify(result))).name + '&desc=' + JSON.parse(alg.dog_rating(JSON.stringify(q), JSON.stringify(result))).description});
                 return res.end()
                 }
             });
