@@ -9,7 +9,7 @@ exports.dog_rating = function (q, r) {
     }
     // calculate scores for each breed
     for (var i = 0; i < result.length; i++) {
-        if (result[i].breed_group == query.breed_group){
+        if (result[i].breed_group == query.breed_group) {
             scores[i] += 5;
         }
         if (result[i].color1 == query.color1) {
@@ -36,6 +36,21 @@ exports.dog_rating = function (q, r) {
         scores[i] -= Math.abs(query.trainability - result[i].trainability);
         scores[i] -= Math.abs(query.friendliness - result[i].friendliness);
     }
+
+    // Take best 3 matches
+    /*num_maxes = 0;
+    if (scores.length() >= 3) {
+        num_maxes = 3;
+    } else if (scores.length() == 2) {
+        num_maxes = 2;
+    } else if (scores.length() == 1) {
+        num_maxes = 1;
+    }*/
+
+    for (var i = 0; i < scores.length; i++) {
+        console.log("%i", scores[i])
+    }
+
     max = -10000;
     ind_max = 0;
 
@@ -45,7 +60,10 @@ exports.dog_rating = function (q, r) {
             ind_max = i;
         }
     }
-
+    //console.log("%i", max)
     
-    return result[ind_max].name + '%' + result[ind_max].description 
+
+    console.log(result[ind_max].name)
+    return result[ind_max].name
+    //res.write(result[ind_max].name)
 }
