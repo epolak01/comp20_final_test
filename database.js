@@ -21,7 +21,7 @@ http.createServer(function (req, res) {
     var mongourl = "mongodb+srv://dog_webpage:tygrUg-fenrac-qibby3@cluster0-ug0jz.mongodb.net/test?retryWrites=true&w=majority";
     console.log("Not yet in db")
 
-    res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none' });
+    //res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none' });
 
     //Connect to our database
     MongoClient.connect(mongourl, function (err, db) {
@@ -43,10 +43,13 @@ http.createServer(function (req, res) {
             if (result.length == 0) {
                 res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none'});
                 //res.write("No Dog Breeds Found")
+                return res.end()
             } else {
                 // calculate scores for each breed
                 res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' +
-                 alg.dog_rating(JSON.stringify(q), JSON.stringify(result))});
+                alg.dog_rating(JSON.stringify(q), JSON.stringify(result))});
+                return res.end()
+
             }
             
             db.close();
