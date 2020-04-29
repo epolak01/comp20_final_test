@@ -45,5 +45,7 @@ exports.dog_rating = function (q, r) {
             ind_max = i;
         }
     }
-    return JSON.stringify(result[ind_max])
+
+    
+    return result[ind_max].name + '%' + result[ind_max].description 
 }

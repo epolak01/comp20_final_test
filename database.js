@@ -40,7 +40,7 @@ http.createServer(function (req, res) {
                 return res.end()
             } else {
             // calculate scores for each breed                 
-                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' + JSON.parse(alg.dog_rating(JSON.stringify(q), JSON.stringify(result))).name + '&desc=' + JSON.parse(alg.dog_rating(JSON.stringify(q), JSON.stringify(result))).description});
+                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' + alg.dog_rating(JSON.stringify(q), JSON.stringify(result)) });
                 return res.end()
                 }
             });
