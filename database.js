@@ -12,8 +12,7 @@ var alg = require("./algorithm");
 var port = process.env.PORT || 3000;
 
 http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write("Hello World")
+    res.writeHead(301, {Location: 'http://'});
 
     //Parse the server request
     var q = url.parse(req.url, true).query;
@@ -38,10 +37,12 @@ http.createServer(function (req, res) {
             if (err) throw err;
             //console.log(result.length);
             if (result.length == 0) {
+                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none'});
                 res.write("No Dog Breeds Found")
             } else {
                 // calculate scores for each breed
-                res.write(alg.dog_rating(JSON.stringify(q), JSON.stringify(result)))
+                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' +
+                 alg.dog_rating(JSON.stringify(q), JSON.stringify(result))});
             }
             
             db.close();
