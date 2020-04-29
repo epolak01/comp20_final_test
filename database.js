@@ -34,7 +34,7 @@ http.createServer(function (req, res) {
                 //console.log(result.length);
                 console.log(result)
                 if (result.length == 0) {
-                    res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none' });
+                    res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none&desc=None' });
                     //res.write("No Dog Breeds Found")
                     return res.end()
                 } else {
@@ -58,7 +58,7 @@ http.createServer(function (req, res) {
             //console.log("in query")
             //console.log(result.length);
                 if (result.length == 0) {
-                    res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none'});
+                    res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none&desc=None'});
                 //res.write("No Dog Breeds Found")
                     return res.end()
                 } else {
