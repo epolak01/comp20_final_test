@@ -1,29 +1,79 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html>
 
 <head>
-    <title>Dog Results</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="jquery-3.4.1.js"></script>
+    <title>Results</title>
+    <meta charset="utf-8" />
+    <script>
+        /**
+        * Get the value of a querystring
+        * @param  {String} field The field to get the value of
+        * @param  {String} url   The URL to get the value from (optional)
+        * @return {String}       The field value
+        */
+        var getQueryString = function (field, url) {
+            var href = url ? url : window.location.href;
+            var reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i');
+            var string = reg.exec(href);
+            return string ? string[1] : null;
+        };
 
-    <style type="text/css">
+        var dog_breed = getQueryString("dog", location.href)
+        alert(dog_breed)
 
-    </style>
 
-    <script language='javascript'>
+
+        function getDogPic() {
+			/* Step 1: Make instance of request object...
+			...to make HTTP request after page is loaded*/
+            request = new XMLHttpRequest();
+            console.log("1 - request object created");
+
+            // Step 2: Set the URL for the AJAX request to be the JSON file
+
+            request.open("GET", "https://dog.ceo/api/breeds/list/all", true);
+
+            console.log("2 - opened request file");
+
+            // Step 3: set up event handler/callback
+
+            request.onreadystatechange = function () {
+                console.log("3 - readystatechange event fired.");
+
+                if (request.readyState == 4 && request.status == 200) {
+
+                    // Step 5: wait for done + success
+
+                    result = request.responseText;
+                    alert(result)
+
+                }
+                else if (request.readyState == 4 && request.status != 200) {
+
+                    document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+                }
+
+                else if (request.readyState == 3) {
+
+                    document.getElementById("data").innerHTML = "Too soon!  Try again";
+
+                }
+
+            }
+            // Step 4: fire off the HTTP request
+            request.send();
+            console.log("4 - Request sent");
+        }
     </script>
-
 </head>
 
-<body>
-    RESULTS
-    <footer>
-        Industry: Plumbing <br>
-        Headquarters: 288 Boston Ave, Medford, MA, 02155
-    </footer>
-</body>
 
-<script language='javascript'>
-</script>
+<body onload="getDogPic()">
+
+    <h1>Dog Pic</h1>
+    <div id="data">Loading...</div>
+
+</body>
 
 </html>
