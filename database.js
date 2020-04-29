@@ -12,8 +12,6 @@ var alg = require("./algorithm");
 var port = process.env.PORT || 3000;
 
 http.createServer(function (req, res) {
-    res.writeHead(301, {Location: 'http://'});
-
     //Parse the server request
     var q = url.parse(req.url, true).query;
     var attribute = q.att;
@@ -21,11 +19,16 @@ http.createServer(function (req, res) {
 
     var MongoClient = require('mongodb').MongoClient;
     var mongourl = "mongodb+srv://dog_webpage:tygrUg-fenrac-qibby3@cluster0-ug0jz.mongodb.net/test?retryWrites=true&w=majority";
+    console.log("Not yet in db")
+
+    res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none' });
 
     //Connect to our database
     MongoClient.connect(mongourl, function (err, db) {
         if (err) throw err;
+        console.log("in db")
         var dbo = db.db("final_project");
+        //res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none' });
 
         
         // Queries database
@@ -35,10 +38,11 @@ http.createServer(function (req, res) {
         //console.log(query)
         dbo.collection("dogBreeds").find(query).toArray(function (err, result) {
             if (err) throw err;
+            console.log("in query")
             //console.log(result.length);
             if (result.length == 0) {
                 res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none'});
-                res.write("No Dog Breeds Found")
+                //res.write("No Dog Breeds Found")
             } else {
                 // calculate scores for each breed
                 res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' +
@@ -46,6 +50,7 @@ http.createServer(function (req, res) {
             }
             
             db.close();
+            console.log("closed db")
             res.end();
         });
     });
