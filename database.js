@@ -44,7 +44,7 @@ http.createServer(function (req, res) {
                 // calculate scores for each breed
                 dog = JSON.parse(alg.dog_rating(JSON.stringify(q), JSON.stringify(result)))
                 res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' +
-                dog.name + '&desc=' + });
+                    dog.name + '&desc=' + dog.description});
                 return res.end()
 
             }
