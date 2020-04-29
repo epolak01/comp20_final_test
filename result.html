@@ -19,6 +19,8 @@
         };
 
         var dog_breed = getQueryString("dog", location.href)
+        var desc = getQueryString("desc", location.href)
+        alert(desc)
         //alert(dog_breed)
 
 
@@ -47,7 +49,7 @@
                     // Step 5: wait for done + success
 
                     result = request.responseText;
-                    alert(result)
+                    //alert(result)
                     document.getElementById("dogpic").src = result[0]
                     document.getElementById("dogname").innerHTML = dog_breed
 
