@@ -5,12 +5,8 @@
     <title>Results</title>
     <meta charset="utf-8" />
     <script>
-        /**
-        * Get the value of a querystring
-        * @param  {String} field The field to get the value of
-        * @param  {String} url   The URL to get the value from (optional)
-        * @return {String}       The field value
-        */
+        
+        //Get the value of a query
         var getQueryString = function (field, url) {
             var href = url ? url : window.location.href;
             var reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i');

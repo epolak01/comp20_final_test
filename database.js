@@ -26,32 +26,49 @@ http.createServer(function (req, res) {
         if (err) throw err;
         //console.log("in db")
         var dbo = db.db("final_project");
-        
-        // Queries database
-        var query = { };
-        query[attribute] = value
-        //var query = {attribute : value};
-        //console.log(query)
-        dbo.collection("dogBreeds").find(query).toArray(function (err, result) {
-            if (err) throw err;
+
+        if (q.val == "idc") {
+            dbo.collection("dogBreeds").find().toArray(function (err, result) {
+                if (err) throw err;
+                //console.log("in query")
+                //console.log(result.length);
+                if (result.length == 0) {
+                    res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none' });
+                    //res.write("No Dog Breeds Found")
+                    return res.end()
+                } else {
+                    // calculate scores for each breed
+                    dog = JSON.parse(alg.dog_rating(JSON.stringify(q), JSON.stringify(result)))
+                    res.writeHead(301, {
+                        Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' +
+                            dog.name + '&desc=' + dog.description
+                    });
+                    return res.end()
+
+                }
+            });
+        } else {
+            var query = { };
+            query[attribute] = value
+            //var query = {attribute : value};
+            //console.log(query)
+            dbo.collection("dogBreeds").find(query).toArray(function (err, result) {
+                if (err) throw err;
             //console.log("in query")
             //console.log(result.length);
-            if (result.length == 0) {
-                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none'});
+                if (result.length == 0) {
+                    res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none'});
                 //res.write("No Dog Breeds Found")
-                return res.end()
-            } else {
+                    return res.end()
+                } else {
                 // calculate scores for each breed
-                dog = JSON.parse(alg.dog_rating(JSON.stringify(q), JSON.stringify(result)))
-                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' +
-                    dog.name + '&desc=' + dog.description});
-                return res.end()
+                    dog = JSON.parse(alg.dog_rating(JSON.stringify(q), JSON.stringify(result)))
+                    res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' +
+                        dog.name + '&desc=' + dog.description});
+                    return res.end()
 
-            }
-            
-            db.close();
-            //console.log("closed db")
-            res.end();
-        });
+                }
+            });
+        }
     });
 }).listen(port);
