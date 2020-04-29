@@ -19,7 +19,9 @@
         };
 
         var dog_breed = getQueryString("dog", location.href)
-        alert(dog_breed)
+        //alert(dog_breed)
+
+
 
 
 
@@ -31,7 +33,7 @@
 
             // Step 2: Set the URL for the AJAX request to be the JSON file
 
-            request.open("GET", "https://dog.ceo/api/breeds/list/all", true);
+            request.open("GET", "https://dog.ceo/api/breed/" + dog_breed +"/images", true);
 
             console.log("2 - opened request file");
 
@@ -46,6 +48,8 @@
 
                     result = request.responseText;
                     alert(result)
+                    document.getElementById("dogpic").src = result[0]
+                    document.getElementById("dogname").innerHTML = dog_breed
 
                 }
                 else if (request.readyState == 4 && request.status != 200) {
@@ -73,6 +77,8 @@
 
     <h1>Dog Pic</h1>
     <div id="data">Loading...</div>
+    <img id="dogpic" src="" alt="loading">
+    <div id="dogname">Loading</div>
 
 </body>
 
