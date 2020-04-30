@@ -68,7 +68,7 @@
 
     <h3>Results</h3>
     <div id="data">Loading...</div>
-    <img id="dogpic" src="" alt="loading">
+    <img id="dogpic" src="" alt="loading" class="center">
     <div id="dogname">Loading</div>
     <div id="dogdescript">Loading</div>
     <div id="note"> Reload the page to look at more photos! </div>
@@ -116,16 +116,12 @@
 </body>
 
 <script>
-        /**
-        * Get the value of a querystring
-        * @param  {String} field The field to get the value of
-        * @param  {String} url   The URL to get the value from (optional)
-        * @return {String}       The field value
-        */
+        
+        // Get the value of a querystring
         var getQueryString = function (field, url) {
             var href = url ? url : window.location.href;
-            var reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i');
-            var string = reg.exec(href);
+            var express = new RegExp('[?&]' + field + '=([^&#]*)', 'i');
+            var string = express.exec(href);
             return string ? string[1] : null;
         };
 
@@ -207,7 +203,6 @@
                 if (request.readyState == 4 && request.status == 200) {
 
                     // Step 5: wait for done + success
-
                     result = request.responseText;
                     result_ob = JSON.parse(result);
                     document.getElementById("dogpic").src = result_ob.message;
