@@ -39,18 +39,6 @@
 
 
     </style>
-
-    <script language='javascript'>
-        $(document).ready(function () {
-            $("#motto").slideDown(1000);
-        });
-
-        $(document).ready(function () {
-            $("#dogpic").slideDown(1000);
-        });
-
-
-    </script>
 </head>
 
 
@@ -135,6 +123,7 @@
                 dog_breed = dog_breed.substring(0,i) + "/" + dog_breed.substring(i+1,dog_breed.length);
         
         var breed_output = formal_breed(dog_breed);
+        var breed_output_api = api_breed(breed_output);
         document.getElementById("dogname").innerHTML = breed_output;
 
         //edits query string to user friendly dog breed name
@@ -186,6 +175,27 @@
             return new_name;
         }
 
+        //edits query string to user friendly dog breed name
+        function api_breed(dog_breed) {
+            var new_name = "";
+            if (dog_breed == "australian/shepherd")
+                new_name = "shepherd/australian";
+            else if (dog_breed == "bulldog/english")
+                new_name = "bulldog/english";
+            else if (dog_breed == "collie/border")
+                new_name = "collie/border";
+            else if (dog_breed == "greyhound/italian")
+                new_name = "greyhound/italian";
+            else if (dog_breed == "retriever/golden")
+                new_name = "retriever/golden";
+            else if (dog_breed == "schnauzer/giant")
+                new_name = "schnauzer/giant";
+            else if (dog_breed == "irish/terrier")
+                new_name = "irish/terrier";
+
+            return new_name;
+        }
+
 
         function getDogPic() {
             /* Step 1: Make instance of request object...
@@ -195,7 +205,7 @@
 
             // Step 2: Set the URL for the AJAX request to be the JSON file
 
-            request.open("GET", "https://dog.ceo/api/breed/" + dog_breed + "/images/random", true);
+            request.open("GET", "https://dog.ceo/api/breed/" + breed_output_api + "/images/random", true);
 
             console.log("2 - opened request file");
 
