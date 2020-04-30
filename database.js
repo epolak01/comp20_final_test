@@ -34,11 +34,11 @@ http.createServer(function (req, res) {
             if (err) throw err;
             // if no dog breeds are found
             if (result.length == 0) {
-                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none'});
+                res.writeHead(301, { Location: 'https://elidow.github.io/comp20final/result.html?dog=none'});
                 return res.end()
             } else {
                 // calculate scores for each breed
-                res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' +
+                res.writeHead(301, { Location: 'https://elidow.github.io/comp20final/result.html?dog=' +
                 alg.dog_rating(JSON.stringify(q), JSON.stringify(result))});
                 return res.end()
             }

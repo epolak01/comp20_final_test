@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset= "utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset= "utf-8">
+    <link rel="stylesheet" type="text/css" href= "style.css" />
+    <script src="jquery-3.4.1.js"></script>
+
+    <style type="text/css">
+        #page {
+            position: relative;
+            min-height: 100vh;
+        }
+		#bannerimage {
+			max-height: 400px;
+			overflow: hidden;
+        }
+        #page_wrapper {
+            padding-bottom: 100px;
+            margin-bottom: 350px;
+        }
+        @media (max-width: 1000px)
+		{
+			#page_wrapper {
+                padding-bottom: 100px;
+                margin-bottom: 550px;
+            }
+		}
+        #page_wrapper {
+            padding-bottom: 100px;
+            margin-bottom: 550px;
+        }
+        .flex_container {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            align-content: space-between;
+            border-style: solid;
+            background-color: #8b38c2;
+        }
+        .flex_container>div {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 40px;
+            color: black;
+            border-style: solid;
+            border-width: 2px;
+            background-color: #e7d6f5;
+            background-blend-mode: darken;
+            padding: 20px;
+            width: 50%;
+            height: 100%;
+        }
+
+        @media (max-width: 1300px)
+		{
+			.flex_containter>div #piclink{
+                max-height: 100px;
+            }
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+    </style>
+    
+	<script language='javascript'>
+
+		$(document).ready(function () {
+				$("#motto").slideDown(1000);
+		});
+
+		$(document).ready(function () {
+				$("#bannerimage").slideDown(1000);
+		});
+			
+	</script>
+</head>
+
+<body bgcolor= "#ffffff"; >
+	<h1>Find My Dog</h1>
+	<h2 id="motto" style="display:none">Take our questionaire to find your what
+        dog breed is best for you!</h2>
+
+	<div class="navbar">
+	  <li><a class="active" href="index.html">Home  <img src = "doghouse.png"></a></li>
+      <li><a href="questions.html">Find My Dog   <img src = "dog.png"></a></li>
+      <li><a href="contact.html">Contact    <img src = "paw.png"></a></li>
+    </div>
+
+    <h3>Find your dog nearby!</h3>
+
+    <div id="page">
+        <div id="page_wrapper">
+            <div class="flex_container">
+                <div>
+                    <a href="https://www.adoptapet.com/animal-shelters">
+                    <img id="piclink" src="doginshelter.jpg" style="width:300px; height:192px">
+                    </a>
+                    <p>Click here to find a shelter!</p>
+                    <br>
+                </div>
+                <div>
+                    <a href="https://www.akc.org/dog-breeds/">
+                    <img id="piclink2" src="dogwithowner.jpg" style="width:300px; height:187px">
+                    </a>
+                    <p>Click here to find more info <br> on your dog breed!</p>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer-distributed">
+ 
+            <div class="footer-left">
+                <h4>Find My Dog</h4>
+        
+                <p class="footer-links" style="font-size: 16px" >
+                    <a href="index.html">Home</a>
+                    |
+                    <a href="questions.html">Find My Dog</a>
+                    |
+                    <a href="contact.html">Contact</a>
+                </p>
+        
+                <p class="footer-company-name">© FindMyDog.com</p>
+            </div>
+
+
+        
+            <div class="footer-center">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                      <p style="font-size: 16px">Address: 288 Boston Ave,<br> &emsp;&emsp;&emsp;&emsp; Medford, MA, 02155</p>
+                </div>
+        
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p style="font-size: 16px">Phone Number: 617-FIN-DDOG</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p style="font-size: 16px">Email: findmydog@business.com</p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p class="footer-company-about">
+                    We offer a free sercvice to find the dogs you want</p>
+                <div class="social-media">
+                    Follow us on Facebook, Instagram, and Tik Tok!
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

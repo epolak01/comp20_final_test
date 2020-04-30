@@ -1,0 +1,3 @@
+name,breed_group,size,color1,color2,coat_len,allergy_friendly,kid_friendly,energy_level,playfulness,shedding,exercise,bark_tendency,trainability,friendliness
+Boxer,Working Dogs,medium,fawn,brindle,short,false,true,5,5,4,5,3,3,4
+Affenpinscher,Companion Dogs,small,black,silver,medium,false,false,4,4,1,3,2,3,3

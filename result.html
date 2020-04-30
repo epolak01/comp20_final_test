@@ -32,16 +32,37 @@
             margin-bottom: 30px;
         }
 
+        .retake {
+            font-size: 20px;
+            margin-bottom: 100px;
+            border-style: solid;
+            border-width: 10px;
+        }
+
+
         #note {
             margin-left: 10px;
             font-size: 30px;
+            margin-bottom: 600px;
         }
-
-        #pic {
+	    
+	#pic {
             text-align: center;
         }
 
+        #dogname {
+            text-align: center;
+        }
 
+        @media (max-width: 1000px)
+        {
+            #note {
+                margin-left: 10px;
+                font-size: 30px;
+                margin-bottom: 700px;
+            }
+        }
+	    
     </style>
 
     <script language='javascript'>
@@ -75,19 +96,24 @@
     <div id="pic"><img id="dogpic" src="" alt="loading"></div>
     <div id="dogname">Loading</div>
     <div id="dogdescript">Loading</div>
+    
+    <div class="retake">
+        <li><a href="questions.html">Take the Quiz Again!</a></li>
+    </div>
+
     <div id="note"> Reload the page to look at more photos! </div>
 
     <footer class="footer-distributed">
  
 		<div class="footer-left">
-			<h3>Find My Dog</h3>
+			<h4>Find My Dog</h4>
 	
 			<p class="footer-links">
 				<a href="index.html">Home</a>
 				|
 				<a href="questions.html">Find My Dog</a>
 				|
-				<a href="login.html">Contact</a>
+				<a href="contact.html">Contact</a>
 			</p>
 	
 			<p class="footer-company-name">© FindMyDog.com</p>

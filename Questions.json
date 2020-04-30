@@ -1,0 +1,83 @@
+{
+	"Questions": [
+		{ // 0
+			"question" : "What sort of breed are you looking for?",
+			"A" : "Terrier",
+			"B" : "Retriever",
+			"C" : "Hound",
+			"D" : "I'm not sure"
+		},
+		{ // 1
+			"question" : "What size dog would you prefer?",
+			"A" : "Tiny",
+			"B" : "Medium",
+			"C" : "Large",
+			"D" : "Very Large"
+		},
+		{ // 2
+			"question" : "Select the color of dog you would prefer:",
+			"A" : "Light Coat",
+			"B" : "Dark Coat",
+			"C" : "Medium Coat",
+			"D" : "No preference"
+		},
+		{ // 3
+			"question" : "What length of your dog's coat would you prefer?",
+			"A" : "Short",
+			"B" : "Short and Curly",
+			"C" : "Long",
+			"D" : "Fluffy"
+		},
+		{ // 4
+			"question" : "Select the dog's personality types that you connect with most:",
+			"A" : "Lazy",
+			"B" : "High-Maintenance",
+			"C" : "Energetic",
+			"D" : "Playful",
+			"E" : "Curious",
+			"F" : "Shy"
+		},
+		{ // 5
+			"question" : "In which area do you live?",
+			"A" : "Town",
+			"B" : "Countryside",
+			"C" : "Suburbs",
+			"D" : "Lake/Ocean Front"
+		},
+		{ // 6
+			"question" : "How far are you willing to drive to adopt your dog?",
+			"A" : "Within 1 Mile",
+			"B" : "5 Miles",
+			"C" : "20 Miles",
+			"D" : "50 or more miles"
+		},
+		{ // 7
+			"question" : "What is your available price range for your dog?",
+			"A" : "Around $500",
+			"B" : "Around $1000",
+			"C" : "Around $1500",
+			"D" : "$2000 or more"
+		},
+		{ // 8
+			"question" : "Do you have kids?",
+			"A" : "Yes",
+			"B" : "No",
+			"C" : "I will soon have kids",
+			"D" : "I am not sure"
+		},
+		{ // 9
+			"question" : "Do you exercise or run outside often?",
+			"A" : "Yes",
+			"B" : "No",
+			"C" : "I workout inside",
+			"D" : "I can workout more with my dog!"
+		},
+		{ // 10
+			"question" : "Is anyone in your family allergic to dogs?",
+			"A" : "Yes",
+			"B" : "No",
+			"C" : "Family in another house",
+			"D" : "I am not sure"
+		}
+	]
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Find out the right dog for you!</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.js"> </script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$.getJSON("/Users/ryandreher/Desktop/Comp20/Final/Questions.json", function(data) {
+			$.each(data.Questions, function() {
+				$.each(this, function(i,v) {
+					var tblrow = "<tr>" + "<td>" + f.question + "</td> <td>" +
+					"<input type='button' class='choice' id='A' value=" + v.A + "onclick='checkAnswer('A')' />" + "</td> <td>" +
+					"<input type='button' class='choice' id='B' value=" + v.B + " onclick='checkAnswer('B')' />" + "</td> <td>" +
+	                "<input type='button' class='choice' id='C' value=" + v.C + " onclick='checkAnswer('C')' />" + "</td> <td>" +
+	                "<input type='button' class='choice' id='D' value=" + v.D + "  onclick='checkanswer('D')' />" + "</td> <td>" +
+	                "<div id='opE'></div>" + "</td> <td>" +
+	                "<div id='opF'></div>" + "</td> </tr>";
+	                $(tblrow).appendTo("#questionnaire tbody");
+				});
+			});
+		});
+    });
+	</script>
+	 <div class="wrapper">
+        <table id="questionnaire" border="2">
+        	<caption>Answer the following questions honestly to figure out what you are specifically looking for in your new dog.</caption>
+        	<thead>
+        		<th rowspan="6"></th>
+        	</thead>
+        	<tbody>
+        		
+        	</tbody>
+        </table>
+    </div>
+</body>
+</html>
