@@ -37,20 +37,7 @@ exports.dog_rating = function (q, r) {
         scores[i] -= Math.abs(query.friendliness - result[i].friendliness);
     }
 
-    // Take best 3 matches
-    /*num_maxes = 0;
-    if (scores.length() >= 3) {
-        num_maxes = 3;
-    } else if (scores.length() == 2) {
-        num_maxes = 2;
-    } else if (scores.length() == 1) {
-        num_maxes = 1;
-    }*/
-
-    for (var i = 0; i < scores.length; i++) {
-        console.log("%i", scores[i])
-    }
-
+    //Find best fit
     max = -10000;
     ind_max = 0;
 
@@ -60,10 +47,5 @@ exports.dog_rating = function (q, r) {
             ind_max = i;
         }
     }
-    //console.log("%i", max)
-    
-
-    console.log(result[ind_max].name)
     return result[ind_max].name
-    //res.write(result[ind_max].name)
 }

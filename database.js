@@ -15,7 +15,6 @@ http.createServer(function (req, res) {
     //Parse the server request
     var q = url.parse(req.url, true).query;
     var attribute = q.att;
-    //var value = q.val
 
     var MongoClient = require('mongodb').MongoClient;
     var mongourl = "mongodb+srv://dog_webpage:tygrUg-fenrac-qibby3@cluster0-ug0jz.mongodb.net/test?retryWrites=true&w=majority";
@@ -28,24 +27,20 @@ http.createServer(function (req, res) {
         var dbo = db.db("final_project");
 
         
-        // Queries database
+        // Queries database using most important attribute
         var query = { };
-        //query[attribute] = value
         query[attribute] = q[attribute]
         dbo.collection("dogBreeds").find(query).toArray(function (err, result) {
             if (err) throw err;
-            console.log("in query")
-            //console.log(result.length);
+            // if no dog breeds are found
             if (result.length == 0) {
                 res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=none'});
-                //res.write("No Dog Breeds Found")
                 return res.end()
             } else {
                 // calculate scores for each breed
                 res.writeHead(301, { Location: 'https://epolak01.github.io/comp20_final_test/result.html?dog=' +
                 alg.dog_rating(JSON.stringify(q), JSON.stringify(result))});
                 return res.end()
-
             }
         });
     });
