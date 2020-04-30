@@ -3,10 +3,125 @@
 
 <head>
     <title>Results</title>
-    <meta charset="utf-8" />
-    <script>
-        
-        //Get the value of a query
+    <meta charset= "utf-8">
+    <link rel="stylesheet" type="text/css" href= "style.css" />
+    <style>
+
+        #data {
+            visibility: hidden;
+        }
+
+        #dogpic {
+            
+            height: 400px;
+            margin-top: 10px;
+            margin-left: 50px;
+            margin-bottom: 20px;
+        }
+
+        #dogname {
+            font-size: 50px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #dogdescript {
+            font-size: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 30px;
+        }
+
+        #note {
+            margin-left: 10px;
+            font-size: 30px;
+        }
+
+
+    </style>
+
+    <script language='javascript'>
+        $(document).ready(function () {
+            $("#motto").slideDown(1000);
+        });
+
+        $(document).ready(function () {
+            $("#dogpic").slideDown(1000);
+        });
+
+
+    </script>
+</head>
+
+
+<body onload="getDogPic()">
+    <h1>Find My Dog</h1>
+	<h2 id="motto" style="display:none">Take our questionaire to find your what
+        dog breed is best for you!</h2>
+
+	<div class="navbar">
+	  <li><a class="active" href="#home">Home  <img src = "doghouse.png"></a></li>
+      <li><a href="questions.html">Find My Dog   <img src = "dog.png"></a></li>
+      <li><a href="contact.html">Contact    <img src = "paw.png"></a></li>
+	</div>
+
+
+    <h3>Results</h3>
+    <div id="data">Loading...</div>
+    <img id="dogpic" src="" alt="loading">
+    <div id="dogname">Loading</div>
+    <div id="dogdescript">Loading</div>
+    <div id="note"> Reload the page to look at more photos! </div>
+
+    <footer class="footer-distributed">
+ 
+		<div class="footer-left">
+			<h3>Find My Dog</h3>
+	
+			<p class="footer-links">
+				<a href="index.html">Home</a>
+				|
+				<a href="questions.html">Find My Dog</a>
+				|
+				<a href="login.html">Contact</a>
+			</p>
+	
+			<p class="footer-company-name">© FindMyDog.com</p>
+		</div>
+	
+		<div class="footer-center">
+			<div>
+				<i class="fa fa-map-marker"></i>
+				  <p>Address: 288 Boston Ave,<br> &emsp;&emsp;&emsp;&emsp; Medford, MA, 02155</p>
+			</div>
+	
+			<div>
+				<i class="fa fa-phone"></i>
+				<p>Phone Number: 617-FIN-DDOG</p>
+			</div>
+			<div>
+				<i class="fa fa-envelope"></i>
+				<p>Email: findmydog@business.com</p>
+			</div>
+		</div>
+		<div class="footer-right">
+			<p class="footer-company-about">
+				We offer a free sercvice to find the dogs you want</p>
+			<div class="social-media">
+				Follow us on Facebook, Instagram, and Tik Tok!
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+<script>
+        /**
+        * Get the value of a querystring
+        * @param  {String} field The field to get the value of
+        * @param  {String} url   The URL to get the value from (optional)
+        * @return {String}       The field value
+        */
         var getQueryString = function (field, url) {
             var href = url ? url : window.location.href;
             var reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i');
@@ -15,21 +130,72 @@
         };
 
         var dog_breed = getQueryString("dog", location.href)
-        alert(dog_breed)
+        for(var i = 0; i < dog_breed.length; i++)
+            if(dog_breed[i] == "/")
+                dog_breed = dog_breed.substring(0,i) + "/" + dog_breed.substring(i+1,dog_breed.length);
+        
+        var breed_output = formal_breed(dog_breed);
+        document.getElementById("dogname").innerHTML = breed_output;
 
+        //edits query string to user friendly dog breed name
+        function formal_breed(dog_breed) {
+            var new_name = "";
+            if(dog_breed == "affenpinscher")
+                new_name = "Affenpinscher";
+            else if(dog_breed == "australian/shepherd")
+                new_name = "Australian Shepherd";
+            else if(dog_breed == "basenji")
+                new_name = "Basenji";
+            else if(dog_breed == "beagle")
+                new_name = "Beagle";
+            else if(dog_breed == "bouvier")
+                new_name = "Bouvier Des Flanders";
+            else if(dog_breed == "boxer")
+                new_name = "Boxer";
+            else if(dog_breed == "bulldog/english")
+                new_name = "English Bulldog";
+            else if(dog_breed == "chihuahua")
+                new_name = "Chihuahua";
+            else if(dog_breed == "chow")
+                new_name = "Chow Chow";
+            else if(dog_breed == "collie/border")
+                new_name = "Border Collie";
+            else if(dog_breed == "germanshepherd")
+                new_name = "German Shepherd";
+            else if(dog_breed == "greyhound/italian")
+                new_name = "Italian Greyhound";
+            else if(dog_breed == "husky")
+                new_name = "Siberian Husky";
+            else if(dog_breed == "newfoundland")
+                new_name = "Newfoundland";
+            else if(dog_breed == "pitbull")
+                new_name = "Pitbull";
+            else if(dog_breed == "pug")
+                new_name = "Pug";
+            else if(dog_breed == "retriever/golden")
+                new_name = "Golden Retriever";
+            else if(dog_breed == "rottweiler")
+                new_name = "Rottweiler";
+            else if(dog_breed == "schnauzer/giant")
+                new_name = "Giant Schnauzer";
+            else if(dog_breed == "shihtzu")
+                new_name = "Shihtzu";
+            else if(dog_breed == "terrier/irish")
+                new_name = "Irish Terrier";
 
-
+            return new_name;
+        }
 
 
         function getDogPic() {
-			/* Step 1: Make instance of request object...
-			...to make HTTP request after page is loaded*/
+            /* Step 1: Make instance of request object...
+            ...to make HTTP request after page is loaded*/
             request = new XMLHttpRequest();
             console.log("1 - request object created");
 
             // Step 2: Set the URL for the AJAX request to be the JSON file
 
-            request.open("GET", "https://dog.ceo/api/breed/" + dog_breed +"/images/random", true);
+            request.open("GET", "https://dog.ceo/api/breed/" + dog_breed + "/images/random", true);
 
             console.log("2 - opened request file");
 
@@ -43,9 +209,9 @@
                     // Step 5: wait for done + success
 
                     result = request.responseText;
-                    //alert(result)
-                    document.getElementById("dogpic").src = result[0]
-                    document.getElementById("dogname").innerHTML = dog_breed
+                    result_ob = JSON.parse(result);
+                    document.getElementById("dogpic").src = result_ob.message;
+                    print_description(dog_breed);
 
                 }
                 else if (request.readyState == 4 && request.status != 200) {
@@ -65,17 +231,112 @@
             request.send();
             console.log("4 - Request sent");
         }
+
+        //prints description of dog breed result
+        function print_description(dog_breed) {
+            var description = "";
+
+            if(dog_breed == "affenpinscher")
+                description = "The Affenpinscher, also known as the ‘Monkey Dog’, may be small, but he sure is feisty, full of spunk, and "
+                            + "flowing with energy. This mustached little critter descended from the numerous small terriers that populated "
+                            + "stables and shops in the 1700s, ridding them of rats and mice. Sturdy, smart, and alert, the Affenpinscher is an excellent " 
+                            + "watchdog who fears nothing. He's not normally loud, but he is always excitable. This breed combines clownlike charm with a bold " 
+                            + "nature, and his creative personality that never ceases to entertain others makes him a great pick for a pet!";
+            else if(dog_breed == "australian/shepherd")
+                description = "Despite what one would expect from its name, the Australian Shepherd originated in the western United States around the time of the " 
+                            + "Gold Rush in the 1840s. Originally bred as herding dogs to herd livestock, they evolved into a working dog breed because they are " 
+                            + "happiest when they have a job to do. Today, many people know the breed by its nickname the Aussie as well as its wonderful blend of " 
+                            + "colors. The Aussie can be a wonderful family companion if his intelligence and energy are channeled into dog sports or activities!";
+            else if(dog_breed == "basenji")
+                description = "Out of Africa, the Basenji dog breed was originally found in the Democratic Republic of the Congo as well as Egypt. As a type of hound, " 
+                            + "he uses both scent and sight to hunt, and was originally used to push small game into a hunter’s nets and to control rodent populations in " 
+                            + "villages. Clever and endearing, he’s a good companion for the person or family who can stay a step ahead of him. Basenji are also allergy "
+                            + "friendly, don’t shed, and aren’t very noisy!";
+            else if(dog_breed == "beagle")
+                description = "The Beagle originally was bred as a scenthound to track small game, mostly rabbits and hare. He is still used for this purpose in many " 
+                            + "countries, including the United States. Small, compact, and hardy, Beagles are active companions for kids and adults alike. Canines in this " 
+                            + "dog breed are fun loving and cheerful, but being hounds, they can be slightly stubborn and require patient, unique training techniques. Their " 
+                            + "noses guide them through life, and they’re at their happiest when following an interesting scent!";
+            else if(dog_breed == "bouvier")
+                description = "The Bouvier des Flandres was originally bred to be a versatile farm dog. They helped farmers in a multitude of tasks, including herding " 
+                            + "livestock such as cattle, pulling massive carts, and guarding territory. The hard-working and intelligent Bouvier is still an ideal farm dog, "
+                            + "and they are even capable of service, assistance, and law enforcement. On top of all of these roles, the family companion is the role that seems " 
+                            + "to suit him best. The Bouvier might not be very well known, but you have as much love as you put in!";
+            else if(dog_breed == "boxer")
+                description = "Boxer dogs were originally bred to be medium-sized guard dogs. Although they currently are a part of the AKC’s Working Group, Boxers can find " 
+                            + "homes as loving companions. That being said, they still retain their high energy levels and need plenty of exercise. They adore their families and " 
+                            + "will also appreciate consistent training that doesn’t rely on harsh commands. Square-jawed and muscular, this breed is the George Clooney of the dog " 
+                            + "world: handsome with a sense of humor and an underlying sweetness!";
+            else if(dog_breed == "bulldog/english")
+                description = "Bulldogs are never mistaken for other breeds of dogs. Bulldogs are a medium-sized dog with a thick-set, low-slung body. They have broad shoulders " 
+                            + "chests, with thick, sturdy limbs. They originally were used to drive cattle to market and to compete in a bloody sport called bull baiting. Today, " 
+                            + "they’re gentle companions who love kids. A brief walk and a nap on the sofa is just this dog breed‘s speed!";
+            else if(dog_breed == "chihuahua")
+                description = "The charmful Chihuahua dog breed is known for their small size, big personality, and variety in coat types and colors. Chihuahuas are 100% dog, " 
+                            + "fully capable of competing in dog sports such as agility and obedience, and experts consider them as top ten watch dogs recommended. These dogs love " 
+                            + "more than being with their people and require a minimum of grooming and exercise!";
+            else if(dog_breed == "chow")
+                description = "The Chow-Chow, or Chow, is a dog breed originally from northern China, where it is referred to as Songshi-Quan, which means puffy-lion dog. This " 
+                            + "distinctive-looking dog breed has a proud, independent spirit that many describe as catlike. They can be aloof, and if you’re looking for a cuddle " 
+                            + "buddy, this probably isn’t the best breed for you. But for the right person, he’s a fiercely loyal companion!";
+            else if(dog_breed == "collie/border")
+                description = "The Border Collie was developed to control and gather sheep in the hilly border country between England and Scotland. The breed is known for his " 
+                            + "intense stare, which he uses to his advantage to control his flock. They are dogs with unlimited energy, stamina, and working drive, all of which " 
+                            + "make him a premier herding dog. The highly trainable and intelligent Border Collie also excels in various canine sports, including obedience, flyball, " 
+                            + "agility, tracking, and flying disc competitions!";
+            else if(dog_breed == "germanshepherd")
+                description = "The German Shepherd Dog is undeniably one of the most popular dog breeds in the United States, and for good reason. They’re intelligent and " 
+                            + "capable working dogs, and their devotion and courage are unmatched. German Shepherds are amazingly versatile, excelling at most anything they’re "
+                            + "to do, which includes guide and assistance work for the handicapped, police and military service, herding, search and rescue, drug detection, " 
+                            + "competitive obedience, and being a faithful companion!";
+            else if(dog_breed == "greyhound/italian")
+                description = "The Italian Greyhound dog breed was a favorite companion of noblewomen in the Middle Ages, especially in Italy. But this small hound was more " 
+                            + "than a lap dog, having the speed, endurance, and determination to hunt small game. These days, he’s a family dog whose beauty and athleticism is " 
+                            + "admired in the show ring and in obedience, agility, and rally competitions. It is recommended that you get two of these so that they can keep each " 
+                            + "company!";
+            else if(dog_breed == "husky")
+                description = "Originally from Siberia, the Siberian Husky is a beautiful dog breed with a thick coat that comes in a multitude of colors and markings. Their blue " 
+                            + "or multi-colored eyes and striking facial masks only add to the appeal of this stunning breed. It is easy to see why many are drawn to the Siberian’s " 
+                            + "wolf-like looks, but be aware that this athletic, intelligent dog can be independent and challenging for first-time dog owners. Huskies also put the H " 
+                            + "in Houdini and need a fenced yard that is sunk in the ground to prevent escapes, so beware!";
+            else if(dog_breed == "newfoundland")
+                description = "Newfoundland is a large, strong dog breed from Newfoundland (Shocker, I know). They were originally used as a working dog to pull nets for fishermen " 
+                            + "and haul wood from the forest. Newfoundland is a capable and hardworking dog, well suited to work on land or water. He is a strong swimmer and equally " 
+                            + "strong pack horse. Sweet-natured and responsive, he makes a wonderful family companion as well!";
+            else if(dog_breed == "pitbull")
+                description = "The American Pit Bull Terrier is a companion and family dog breed. Originally bred to bait bulls, the breed evolved into all-around farm dogs. " 
+                            + "Their tenacity, gameness, and courage make them popular competitors in the sports of weight pulling, agility, and obedience competition. Although this " 
+                            + "dog has trouble getting along with other breeds, this breed is full of energy and can be very playful at times!";
+            else if(dog_breed == "pug")
+                description = "Pugs often are described as a big dog in a small space. The Pug, often called the Pug Dog, is an ancient Chinese breed that can be traced back to " 
+                            + "2,000 years ago. These sturdy, compact dogs are a part of the American Kennel Club’s Toy group, and are known as the clowns of the canine world because " 
+                            + "they have a great sense of humor and like to show off. Originally bred to be a lap dog, the Pug thrives on human companionship!";
+            else if(dog_breed == "retriever/golden")
+                description = "The Golden Retriever is one of the most popular dog breeds in the United States. The breed’s friendly, tolerant attitude makes them fabulous family " 
+                            + ", and their intelligence makes them highly capable working dogs. Golden Retrievers excel at retrieving game for hunters, tracking, sniffing out " 
+                            + "contraband for law enforcement, and as therapy and assistance dogs. They’re also natural athletes and do well in dog sports such as agility and " 
+                            + "competitive obedience. These dogs are fairly easy to train and get along in just about any home or family!";
+            else if(dog_breed == "rottweiler")
+                description = "Rottweilers originally were bred to drive cattle to market. Later, they were used to pull carts for butchers and were among the earliest police dogs " 
+                            + "to serve in the military. Most important, they are popular family guardians and friends. Rottweilers are recommended to have big, spacious crates to give " 
+                            + "them a place to rest and relax. You should also pick up this dog brush and massager for your short-haired pup!";
+            else if(dog_breed == "schnauzer/giant")
+                description = "The Giant Schnauzer was created to be a working dog breed, so they have intelligence and drive. They can be a loyal and courageous companion for "  
+                            + "person who can provide them with the training, exercise, and attention they need. These pups originated in Germany, where they had jobs like driving " 
+                            + "cattle, working in butcher shops and stockyards, and even guarding breweries. Although this is a pure breed of dog, you may find them in shelters and " 
+                            + "rescues, so remember to adopt!";
+            else if(dog_breed == "shihtzu")
+                description = "The name Shih Tzu means little lion, but there’s nothing fierce about this dog breed. This pooch is a lover, not a hunter. Bred solely to be " 
+                            + "companions, Shih Tzus are affectionate, happy, outgoing house dogs who love nothing more than to follow their people from room to room. Although they " 
+                            + "trained in dog sports and agility competitions nowadays, they made themselves comfortable on the laps of people in ancient times, even emperors!";
+            else if(dog_breed == "terrier/irish")
+                description = "The Irish Terrier dog breed was once described as the poor man’s sentinel, the farmer’s friend, and the gentleman’s favorite. The first record of " 
+                            + "this breed being recognized goes back to dates as far as 1875 in Glasgow, Scotland. Rugged and stouthearted, he has the advantages of a convenient " 
+                            + "size, versatile abilities as a companion, watchdog, and vermin dispatcher, and high train-ability!";
+
+            document.getElementById("dogdescript").innerHTML = description;
+        }
+            
     </script>
-</head>
-
-
-<body onload="getDogPic()">
-
-    <h1>Dog Pic</h1>
-    <div id="data">Loading...</div>
-    <img id="dogpic" src="" alt="loading">
-    <div id="dogname">Loading</div>
-
-</body>
 
 </html>
