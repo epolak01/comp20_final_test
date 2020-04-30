@@ -125,6 +125,7 @@
         var breed_output = formal_breed(dog_breed);
         var breed_output_api = api_breed(breed_output);
         document.getElementById("dogname").innerHTML = breed_output;
+        alert(breed_output)
 
         //edits query string to user friendly dog breed name
         function formal_breed(dog_breed) {
@@ -179,19 +180,19 @@
         function api_breed(dog_breed) {
             var new_name = dog_breed;
             if (dog_breed == "australian/shepherd")
-                new_name = "shepherd/australian";
+                new_name = "australian";
             else if (dog_breed == "bulldog/english")
-                new_name = "bulldog/english";
+                new_name = "bulldog";
             else if (dog_breed == "collie/border")
-                new_name = "collie/border";
+                new_name = "collie";
             else if (dog_breed == "greyhound/italian")
-                new_name = "greyhound/italian";
+                new_name = "greyhound";
             else if (dog_breed == "retriever/golden")
-                new_name = "retriever/golden";
+                new_name = "retriever";
             else if (dog_breed == "schnauzer/giant")
-                new_name = "schnauzer/giant";
+                new_name = "schnauzer";
             else if (dog_breed == "terrier/irish")
-                new_name = "irish/terrier";
+                new_name = "terrier";
 
             return new_name;
         }
@@ -205,8 +206,8 @@
 
             // Step 2: Set the URL for the AJAX request to be the JSON file
 
-            //request.open("GET", "https://dog.ceo/api/breed/" + breed_output_api + "/images/random", true);
-            request.open("GET", "https://dog.ceo/api/breed/australian/images/random", true);
+            request.open("GET", "https://dog.ceo/api/breed/" + breed_output_api + "/images/random", true);
+            //request.open("GET", "https://dog.ceo/api/breed/australian/shepard/images/random", true);
 
             console.log("2 - opened request file");
 
